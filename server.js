@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var path = require("path");
 
 var app = express();
-var port = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,7 +12,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("app/public"));
 
-require("./app/routing/api-routes")(app);
-require("./app/routing/html-routes")(app);
+require("./app/routing/api-route")(app);
+require("./app/routing/html-route")(app);
 
-app.listen(port, () => console.log("Listening on port %s", port));
+app.listen(PORT, () => console.log("Listening on port %s", port));
